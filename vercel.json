@@ -1,16 +1,10 @@
 {
   "version": 2,
-  "buildCommand": "npm run build && npm run db:prepare",
-  "builds": [
+  "buildCommand": "npm run build",
+  "rewrites": [
     {
-      "src": "dist/main.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/main.js"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
   ]
 }
