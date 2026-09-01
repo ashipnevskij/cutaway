@@ -8,8 +8,13 @@ export class PrismaService
   implements OnModuleInit, OnModuleDestroy
 {
   constructor() {
+    const connectionString = process.env.DATABASE_URL;
+    const ssl = connectionString?.includes('sslmode=')
+      ? { rejectUnauthorized: false }
+      : undefined;
+
     super({
-      adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }),
+      adapter: new PrismaPg({ connectionString, ssl }),
       log: ['query', 'info', 'warn', 'error'],
     });
     //console.log('PrismaService initialized');
