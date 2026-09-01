@@ -8,8 +8,8 @@ export class Skill {
   @Field()
   name: string;
 
-  @Field({ nullable: true })
-  category?: string;
+  @Field(() => String, { nullable: true })
+  category: string | null;
 
   @Field()
   profileId: number;

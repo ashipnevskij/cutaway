@@ -8,14 +8,14 @@ export class Project {
   @Field()
   name: string;
 
-  @Field({ nullable: true })
-  description?: string;
+  @Field(() => String, { nullable: true })
+  description: string | null;
 
-  @Field()
-  repoUrl: string;
+  @Field(() => String, { nullable: true })
+  repoUrl: string | null;
 
-  @Field({ nullable: true })
-  demoUrl?: string;
+  @Field(() => String, { nullable: true })
+  demoUrl: string | null;
 
   @Field()
   profileId: number;

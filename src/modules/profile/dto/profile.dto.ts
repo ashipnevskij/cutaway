@@ -18,14 +18,14 @@ export class Profile {
   @Field()
   description: string;
 
-  @Field({ nullable: true })
-  githubUrl?: string;
+  @Field(() => String, { nullable: true })
+  githubUrl: string | null;
 
-  @Field({ nullable: true })
-  linkedinUrl?: string;
+  @Field(() => String, { nullable: true })
+  linkedinUrl: string | null;
 
-  @Field({ nullable: true })
-  email?: string;
+  @Field(() => String, { nullable: true })
+  email: string | null;
 
   @Field(() => [Skill])
   skills: Skill[];

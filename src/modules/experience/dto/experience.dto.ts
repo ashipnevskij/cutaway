@@ -14,11 +14,11 @@ export class Experience {
   @Field()
   startDate: Date;
 
-  @Field({ nullable: true })
-  endDate?: Date;
+  @Field(() => Date, { nullable: true })
+  endDate: Date | null;
 
-  @Field({ nullable: true })
-  description?: string;
+  @Field(() => String, { nullable: true })
+  description: string | null;
 
   @Field()
   profileId: number;

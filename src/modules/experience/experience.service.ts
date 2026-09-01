@@ -11,13 +11,19 @@ export class ExperienceService {
   }
 
   async findOne(id: number): Promise<Experience> {
-    return this.prisma.experience.findUnique({ where: { id } });
+    const experience = await this.prisma.experience.findUnique({
+      where: { id },
+    });
+    if (!experience) {
+      throw new Error('Experience not found');
+    }
+    return experience;
   }
 
   async findByProfileId(profileId: number): Promise<Experience[]> {
     return this.prisma.experience.findMany({
       where: { profileId },
-      orderBy: { name: 'asc' },
+      orderBy: { position: 'asc' },
     });
   }
 }

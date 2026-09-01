@@ -8,7 +8,9 @@ export class ProfileService {
   constructor(private prisma: PrismaService) {}
 
   async findOne(): Promise<Profile> {
-    const profile = await this.prisma.profile.findFirst();
+    const profile = await this.prisma.profile.findFirst({
+      include: { skills: true, experiences: true, projects: true },
+    });
 
     if (!profile) {
       throw new Error('Profile not found');

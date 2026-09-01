@@ -20,8 +20,12 @@ export class SkillService {
   }
 
   async findOne(id: number): Promise<Skill> {
-    return this.prisma.skill.findUnique({
+    const skill = await this.prisma.skill.findUnique({
       where: { id },
     });
+    if (!skill) {
+      throw new Error('Skill not found');
+    }
+    return skill;
   }
 }

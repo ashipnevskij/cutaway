@@ -31,9 +31,66 @@
 $ npm install
 ```
 
+## Database & Seed
+
+```bash
+npm run dev
+```
+
+## GraphQL API (Apollo Server)
+
+http://localhost:3000/graphql
+
+Получить все данные профиля:
+
+```graphql
+{
+  profile {
+    id
+    name
+    title
+    description
+    githubUrl
+    linkedinUrl
+    email
+    skills {
+      id
+      name
+      category
+    }
+    experiences {
+      id
+      company
+      position
+      startDate
+      endDate
+      description
+    }
+    projects {
+      id
+      name
+      description
+      repoUrl
+      demoUrl
+    }
+  }
+}
+```
+
+Пример с `curl`:
+
+```bash
+curl -X POST http://localhost:3000/graphql \
+  -H "Content-Type: application/json" \
+  -d '{"query":"{ profile { id name title skills { name } } }"}'
+```
+
 ## Compile and run the project
 
 ```bash
+# full start
+$ npm run dev
+
 # development
 $ npm run start
 
